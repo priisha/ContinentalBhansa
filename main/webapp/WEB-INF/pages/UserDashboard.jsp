@@ -66,7 +66,7 @@
     </div>
   </section>
 
-<!-- Chef's Special Gallery -->
+
 <section class="gallery-section">
   <h2 class="section-title">Chef's Special</h2>
   <div class="gallery-grid">
