@@ -1,4 +1,4 @@
-package com.continentalbhansa.util;
+package com.continentialbhansa.util;
 
 import java.util.regex.Pattern;
 
@@ -10,18 +10,21 @@ public class ValidationUtil {
     private static final Pattern PHONE_PATTERN = 
             Pattern.compile("^[0-9+\\-\\s()]{8,20}$");
     
-    public static void validateName(String name, String fieldName) {
+    public static boolean validateName(String name) {
         if (name == null || name.trim().isEmpty()) {
-            throw new IllegalArgumentException(fieldName + " is required");
+            return false;
         }
         
         if (name.trim().length() < 2 || name.trim().length() > 50) {
-            throw new IllegalArgumentException(fieldName + " must be between 2 and 50 characters");
+        	return false;
+            throw new IllegalArgumentException("This field must be between 2 and 50 characters");
         }
         
         if (!name.trim().matches("^[a-zA-Z\\s'-]+$")) {
-            throw new IllegalArgumentException(fieldName + " contains invalid characters");
+        	return false;
+           
         }
+        return true;
     }
     
     public static void validateEmail(String email) {
