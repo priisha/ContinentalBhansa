@@ -1,4 +1,4 @@
-package com.continentalbhansa.model;
+package com.continentialbhansa.model;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -10,6 +10,7 @@ public class User implements Serializable {
     private String firstName;
     private String lastName;
     private String email;
+    private String address;
     private String phoneNumber;
     private String passwordHash;
     private Date registrationDate;
@@ -18,9 +19,16 @@ public class User implements Serializable {
         this.registrationDate = new Date();
     }
 
+    public String getAddress() {
+    	return address;
+    }
+    public void setAddress(String address) {
+    	this.address = address;
+    }
     public Long getId() {
         return id;
     }
+
 
     public void setId(Long id) {
         this.id = id;

@@ -27,7 +27,11 @@ public class registercontroller extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+<<<<<<< HEAD
 		request.getRequestDispatcher("/WEB-INF/pages/register.jsp").forward(request, response);
+=======
+		request.getRequestDispatcher("WEB-INF/pages/register.jsp").forward(request, response);
+>>>>>>> 048ccb8aefafc522dacd7b2f9113e53288a1dc41
 	}
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
