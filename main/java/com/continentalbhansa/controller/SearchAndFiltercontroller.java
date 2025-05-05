@@ -1,4 +1,4 @@
-package com.continentialbhansa.controller;
+package com.continentalbhansa.controller;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -8,16 +8,16 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * Servlet implementation class Profilecontroller
+ * Servlet implementation class SearchAndFiltercontroller
  */
-@WebServlet(asyncSupported = true, urlPatterns = { "/Profilecontroller" })
-public class Profilecontroller extends HttpServlet {
+@WebServlet(asyncSupported = true, urlPatterns = { "/SearchAndFiltercontroller" })
+public class SearchAndFiltercontroller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Profilecontroller() {
+    public SearchAndFiltercontroller() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,11 +27,7 @@ public class Profilecontroller extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-<<<<<<< HEAD
-		request.getRequestDispatcher("/WEB-INF/pages/Profile.jsp").forward(request, response);
-=======
-		request.getRequestDispatcher("WEB-INF/pages/Profile.jsp").forward(request, response);
->>>>>>> 048ccb8aefafc522dacd7b2f9113e53288a1dc41
+		request.getRequestDispatcher("/WEB-INF/pages/SearchAndFilter.jsp").forward(request, response);
 	}
 
 	/**

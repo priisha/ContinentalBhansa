@@ -1,4 +1,4 @@
-package com.continentialbhansa.controller;
+package com.continentalbhansa.controller;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -8,16 +8,16 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * Servlet implementation class aboutuscontroller
+ * Servlet implementation class registercontroller
  */
-@WebServlet(asyncSupported = true, urlPatterns = { "/aboutuscontroller" })
-public class aboutuscontroller extends HttpServlet {
+@WebServlet(asyncSupported = true, urlPatterns = { "/registercontroller" })
+public class registercontroller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public aboutuscontroller() {
+    public registercontroller() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,9 +27,12 @@ public class aboutuscontroller extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.getRequestDispatcher("/WEB-INF/pages/SearchAndFilter.jsp").forward(request, response);
+<<<<<<< HEAD
+		request.getRequestDispatcher("/WEB-INF/pages/register.jsp").forward(request, response);
+=======
+		request.getRequestDispatcher("WEB-INF/pages/register.jsp").forward(request, response);
+>>>>>>> 048ccb8aefafc522dacd7b2f9113e53288a1dc41
 	}
-
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */

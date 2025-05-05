@@ -1,4 +1,4 @@
-package com.continentialbhansa.controller;
+package com.continentalbhansa.controller;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -8,16 +8,16 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * Servlet implementation class SearchAndFiltercontroller
+ * Servlet implementation class bookinghistorycontroller
  */
-@WebServlet(asyncSupported = true, urlPatterns = { "/SearchAndFiltercontroller" })
-public class SearchAndFiltercontroller extends HttpServlet {
+@WebServlet(asyncSupported = true, urlPatterns = { "/bookinghistorycontroller" })
+public class bookinghistorycontroller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SearchAndFiltercontroller() {
+    public bookinghistorycontroller() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,7 +27,7 @@ public class SearchAndFiltercontroller extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.getRequestDispatcher("/WEB-INF/pages/SearchAndFilter.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/pages/bookinghistory.jsp").forward(request, response);
 	}
 
 	/**

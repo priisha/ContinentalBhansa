@@ -1,4 +1,4 @@
-package com.continentialbhansa.util;
+package com.continentalbhansa.util;
 
 import java.util.regex.Pattern;
 

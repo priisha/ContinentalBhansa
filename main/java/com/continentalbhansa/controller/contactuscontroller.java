@@ -1,4 +1,4 @@
-package com.continentialbhansa.controller;
+package com.continentalbhansa.controller;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
