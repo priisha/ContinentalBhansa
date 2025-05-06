@@ -63,6 +63,8 @@ public class Contact {
         this.message = message;
     }
 
+    
+    
     public String getSubmittedDate() {
         return submittedDate;
     }
@@ -75,6 +77,5 @@ public class Contact {
     public String toString() {
         return "Contact [id=" + id + ", name=" + name + ", email=" + email + ", message=" + message 
                + ", submittedDate=" + submittedDate + "]";
-        
     }
 }
