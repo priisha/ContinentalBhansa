@@ -75,5 +75,6 @@ public class Contact {
     public String toString() {
         return "Contact [id=" + id + ", name=" + name + ", email=" + email + ", message=" + message 
                + ", submittedDate=" + submittedDate + "]";
+        
     }
 }
