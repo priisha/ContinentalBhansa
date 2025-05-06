@@ -16,8 +16,7 @@ public class ValidationUtil {
         }
         
         if (name.trim().length() < 2 || name.trim().length() > 50) {
-        	return false;
-            throw new IllegalArgumentException("This field must be between 2 and 50 characters");
+        	throw new IllegalArgumentException("This field must be between 2 and 50 characters");
         }
         
         if (!name.trim().matches("^[a-zA-Z\\s'-]+$")) {

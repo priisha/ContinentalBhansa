@@ -18,7 +18,7 @@
     <nav class="nav-links">
       <a href="UserDashboard.html">Home</a>
       <a href="contactus.html">Contact</a>
-      <a class="active-link" href="register.html">Register</a>
+      <a class="active-link" href="${pageContext.request.contextPath}/registercontroller">Register</a>
     </nav>
   </header>
 
@@ -33,9 +33,9 @@
     <div class="form-card">
       <h2>Welcome Back</h2>
       <p>Please enter your credentials to proceed</p>
-      <form>
-        <input type="email" placeholder="Email" required />
-        <input type="password" placeholder="Password" required />
+      <form action="Logincontroller" method="post">
+        <input type="text" placeholder="Username" name="username" required />
+        <input type="password" placeholder="Password" name="password" required />
         <button type="submit" class="submit-btn">Login</button>
       </form>
     </div>

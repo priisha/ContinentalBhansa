@@ -6,18 +6,19 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import com.continentalbhansa.service.DeleteUserService;
 
 /**
- * Servlet implementation class UserDashboard
+ * Servlet implementation class DeleteUserController
  */
-@WebServlet(asyncSupported = true, urlPatterns = { "/UserDashboard" })
-public class UserDashboard extends HttpServlet {
+@WebServlet("/DeleteUserController")
+public class DeleteUserController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UserDashboard() {
+    public DeleteUserController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,7 +28,7 @@ public class UserDashboard extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.getRequestDispatcher("/WEB-INF/pages/UserDashboard.jsp").forward(request, response);
+//		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
@@ -35,7 +36,17 @@ public class UserDashboard extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		String username = request.getParameter("username");
+		 if (username != null && !username.isEmpty()) {
+	            DeleteUserService service = new DeleteUserService();
+	            boolean success = service.deleteUser(username);
+	            if (success) {
+	                System.out.println("User deleted: " + username);
+	            } else {
+	                System.out.println("Failed to delete user: " + username);
+	            }
+	        }
+	        response.sendRedirect("manage_user");
 	}
 
 }

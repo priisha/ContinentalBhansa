@@ -1,6 +1,6 @@
 package com.continentalbhansa.util;
 
-import javax.servlet.http.Cookie;
+import jakarta.servlet.http.Cookie;
 
 public class cookieUtil {
     

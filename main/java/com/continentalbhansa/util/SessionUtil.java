@@ -1,6 +1,6 @@
 package com.continentalbhansa.util;
 
-import javax.servlet.http.HttpSession;
+import jakarta.servlet.http.HttpSession;
 
 import com.continentalbhansa.model.User;
 

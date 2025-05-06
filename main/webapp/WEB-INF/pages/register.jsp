@@ -20,7 +20,7 @@
     <nav class="nav-links">
       <a href="UserDashboard.html">Home</a>
       <a href="contactus.html">Contact Us</a>
-      <a href="Login.html">Login</a>
+      <a href="#">Login</a>
       
     </nav>
   </header>
@@ -36,20 +36,22 @@
     <div class="form-card">
       <h2>Create Account</h2>
       <p>Fill in the details below to get started</p>
-      <form>
+      <form action="registercontroller" method="post">
         <div class="form-row dual">
-          <input type="text" placeholder="First Name" required />
-          <input type="text" placeholder="Last Name" required />
-        </div>
-        <div class="form-row">
-          <input type="email" placeholder="Email Address" required />
-        </div>
-        <div class="form-row">
-          <input type="tel" placeholder="Phone Number" required />
+          <input type="text" placeholder="Username" name="username" required />
         </div>
         <div class="form-row dual">
-          <input type="password" placeholder="Password" required />
-          <input type="password" placeholder="Confirm Password" required />
+          <input type="email" placeholder="Email" name="email" required />
+          <input type="text" style="margin-top:12px" placeholder="Address" name="address" required />
+        </div>
+        <div class="form-row dual">
+          <input type="tel" placeholder="Phone Number" name="phoneNumber" required />
+        </div>
+        <div class="form-row dual">
+          <input type="password" placeholder="Password" name="password" required />
+        </div>
+        <div class="form-row dual">
+         <input type="password" placeholder="Confirm Password" required />
         </div>
         <label class="checkbox">
           <input type="checkbox" required />

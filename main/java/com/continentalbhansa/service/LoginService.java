@@ -5,23 +5,19 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
+import com.continentalbhansa.util.PasswordUtil;
 import com.continentalbhansa.config.DBconfig;
 import com.continentalbhansa.model.User;
 
 public class LoginService {
 	private Connection dbConn;
-
+	private final int USER_ROLE = 1;
 	/**
 	 * Constructor initializes the database connection.
 	 */
 	public LoginService() {
-		try {
 			this.dbConn = DBconfig.getDbConnection();
-		} catch (SQLException | ClassNotFoundException ex) {
-			System.err.println("Database connection error: " + ex.getMessage());
-			ex.printStackTrace();
-		}
+		
 	}
 	
 	public Boolean addCustomer(User user){
@@ -29,18 +25,16 @@ public class LoginService {
 			System.err.println("Database connection is not available.");
 			return null;
 		}
-		String insertQuery = "INSERT INTO User (User_Name,Password,Email,Phone,Address,Created_At,Updated_At,Role_ID) "
-				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+		String insertQuery = "INSERT INTO users (User_Name,Password,Email,Phone,Address,Role_ID) "
+				+ "VALUES (?, ?, ?, ?, ?, ?)";
 		try (PreparedStatement insertStmt = dbConn.prepareStatement(insertQuery)) {
             // Insert student details
-            insertStmt.setString(1, user.getFirstName());
+            insertStmt.setString(1, user.getUserName());
             insertStmt.setString(2,  user.getPasswordHash());
             insertStmt.setString(3,  user.getEmail());
             insertStmt.setString(4, user.getPhoneNumber());
             insertStmt.setString(5,  user.getAddress());
-            insertStmt.setString(6,  "");
-            insertStmt.setString(7,  "");
-            insertStmt.setFloat(8,  user.getId());
+            insertStmt.setLong(6,USER_ROLE);
             
             System.out.println("Executing insert statement");
             int rowsAffected = insertStmt.executeUpdate();
@@ -54,4 +48,26 @@ public class LoginService {
         }
 
 	}
+	public Boolean validateLogin(String username, String password) {
+	    if (dbConn == null || username == null || password == null) {
+	        return false;
+	    }
+	    String query = "SELECT Password FROM users WHERE User_Name = ?";
+
+	    try (PreparedStatement stmt = dbConn.prepareStatement(query)) {
+	        stmt.setString(1, username);
+	        ResultSet rs = stmt.executeQuery();
+
+	        if (rs.next()) {
+	            String passwordDB = rs.getString("Password");
+	            return password.equals(passwordDB);
+	        }
+
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+
+	    return false;
+	}
+
 }

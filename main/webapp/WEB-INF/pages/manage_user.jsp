@@ -1,39 +1,37 @@
+<%@ page import="java.util.List"%>
+<%@ page import="com.continentalbhansa.model.User"%>
+<%-- Replace with your actual User class package --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <title>Manage Users</title>
 <link rel="stylesheet" href="css/manage_user.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
-
-
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link
+	href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap"
+	rel="stylesheet">
 </head>
 <body>
+
 	<div class="layout">
 		<!-- Sidebar -->
 		<div class="sidebar">
-  <h4 class="brand">Continental Bhansa</h4>
-
-  <a href="admin_dashboard.jsp">
-    <i class="fas fa-folder"></i> Dashboard
-  </a>
-  <a href="manage_reservation.jsp">
-    <i class="fas fa-calendar-alt"></i> Reservations
-  </a>
-  <a href="#" class="active">
-    <i class="fas fa-users"></i> Users
-  </a>
-  <a href="manage_menu.jsp">
-    <i class="fas fa-bars"></i> Menu
-  </a>
-
-  <div class="logout-section">
-    <a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a>
-  </div>
-</div>
+			<h4 class="brand">Continental Bhansa</h4>
+			<a href="${pageContext.request.contextPath}/"><i
+				class="fas fa-folder"></i> Dashboard</a> <a
+				href="${pageContext.request.contextPath}/manage_reservation"><i
+				class="fas fa-calendar-alt"></i> Reservations</a> <a href="#"
+				class="active"><i class="fas fa-users"></i> Users</a> <a
+				href="${pageContext.request.contextPath}/manage_menu"><i
+				class="fas fa-bars"></i> Menu</a>
+			<div class="logout-section">
+				<a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a>
+			</div>
+		</div>
 
 		<!-- Main Content -->
 		<div class="main-content">
@@ -42,9 +40,9 @@
 					<h2 class="dashboard-header">Manage Users</h2>
 					<p>View and manage all user accounts</p>
 				</div>
-				<button class="add-user-btn">
-  					<i class="fas fa-user-plus"></i> Add User
-				</button>
+				<a href="AddUserController" style="text-decoration: none;"
+					class="add-user-btn"> <i class="fas fa-user-plus"></i> Add User
+				</a>
 			</div>
 
 			<!-- Search and Filter -->
@@ -81,13 +79,17 @@
 						</tr>
 					</thead>
 					<tbody>
+						<%
+						List<User> userList = (List<User>) request.getAttribute("userList");
+						if (userList != null && !userList.isEmpty()) {
+							for (User user : userList) {
+						%>
 						<tr>
-							<td>Aayush Pradhan</td>
-							<td>aayush123@gmail.com<br>+977 9876-456789
-							</td>
-							<td>Kathmandu, Nepal</td>
-							<td>Oct 11, 2024</td>
-							<td>12</td>
+							<td><%=user.getUserName()%></td>
+							<td><%=user.getEmail()%><br><%=user.getPhoneNumber()%></td>
+							<td><%=user.getAddress()%></td>
+							<td>--</td>
+							<td>--</td>
 							<td><span class="status-badge Active">Active</span></td>
 							<td><select class="action-select">
 									<option>Status</option>
@@ -95,98 +97,36 @@
 									<option>Inactive</option>
 									<option>Monitor</option>
 							</select>
-								<button class="edit-btn">✏️</button>
-								<button class="delete-btn">🗑</button></td>
+								<form action="EditUserController" method="get"
+									style="display: inline;">
+									<input type="hidden" name="id" value="<%=user.getId()%>">
+									<button type="submit" class="edit-btn">
+										<i class="fas fa-edit"></i>
+									</button>
+								</form>
+								<form action="DeleteUserController" method="post"
+									style="display: inline;">
+									<input type="hidden" name="username"
+										value="<%=user.getUserName()%>">
+									<button type="submit" class="delete-btn"
+										onclick="return confirm('Are you sure you want to delete this user?');">🗑</button>
+								</form></td>
 						</tr>
+						<%
+						}
+						} else {
+						%>
 						<tr>
-							<td>Rajesh Singh</td>
-							<td>rajesh.singh@xyz.com<br>+977 9841 589674
-							</td>
-							<td>Lalitpur, Nepal</td>
-							<td>Dec 1, 2024</td>
-							<td>3</td>
-							<td><span class="status-badge Monitor">Monitor</span></td>
-							<td><select class="action-select">
-									<option>Status</option>
-									<option>Active</option>
-									<option>Inactive</option>
-									<option>Monitor</option>
-							</select>
-								<button class="edit-btn">✏️</button>
-								<button class="delete-btn">🗑</button></td>
+							<td colspan="7" style="text-align: center;">No users found.</td>
 						</tr>
-						<tr>
-							<td>Anita Sharma</td>
-							<td>anita.sharma@email.com<br>+977 98510 69842
-							</td>
-							<td>Kalanki, Kathmandu, Nepal.</td>
-							<td>Nov 25, 2024</td>
-							<td>5</td>
-							<td><span class="status-badge Active">Active</span></td>
-							<td><select class="action-select">
-									<option>Status</option>
-									<option>Active</option>
-									<option>Inactive</option>
-									<option>Monitor</option>
-							</select>
-								<button class="edit-btn">✏️</button>
-								<button class="delete-btn">🗑</button></td>
-						</tr>
-						<tr>
-							<td>Rahul Sharma</td>
-							<td>rahulsharma@abc.com<br>+977 98765 43210
-							</td>
-							<td>Lalitpur, Nepal</td>
-							<td>Jun13, 2024</td>
-							<td>3</td>
-							<td><span class="status-badge Monitor">Monitor</span></td>
-							<td><select class="action-select">
-									<option>Status</option>
-									<option>Active</option>
-									<option>Inactive</option>
-									<option>Monitor</option>
-							</select>
-								<button class="edit-btn">✏️</button>
-								<button class="delete-btn">🗑</button></td>
-						</tr>
-						<tr>
-							<td>Anmol KC</td>
-							<td>kc.anmol@yahoo.coom<br>+977 9841 845521
-							</td>
-							<td>Lalitpur, Nepal</td>
-							<td>April 21, 2020</td>
-							<td>3</td>
-							<td><span class="status-badge Monitor">Monitor</span></td>
-							<td><select class="action-select">
-									<option>Status</option>
-									<option>Active</option>
-									<option>Inactive</option>
-									<option>Monitor</option>
-							</select>
-								<button class="edit-btn">✏️</button>
-								<button class="delete-btn">🗑</button></td>
-						</tr>
-						<tr>
-							<td>Ahmed Khan</td>
-							<td>ahmenkhan123@hotmail.com<br>+977 97085 623458
-							</td>
-							<td>Lalitpur, Nepal</td>
-							<td>Jan 1, 2025</td>
-							<td>3</td>
-							<td><span class="status-badge Monitor">Monitor</span></td>
-							<td><select class="action-select">
-									<option>Status</option>
-									<option>Active</option>
-									<option>Inactive</option>
-									<option>Monitor</option>
-							</select>
-								<button class="edit-btn">✏️</button>
-								<button class="delete-btn">🗑</button></td>
-						</tr>
+						<%
+						}
+						%>
 					</tbody>
 				</table>
 			</div>
 		</div>
 	</div>
+
 </body>
 </html>

@@ -6,7 +6,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Continental Bhansa - Home</title>
-  <link rel="stylesheet" href="UserDashboard.css"/>
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/css/UserDashboard.css"/>
   <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
 </head>
@@ -17,11 +17,10 @@
     <div class="font-logo">Continental Bhansa</div>
     <nav class="nav-links">
       <a href="#">Home</a>
-      <a href="Login.html">Login</a>
       <a href="contactus.html">Contact Us</a>
-      <a href="register.html">Register</a>
       <a href="Reservation.html">Reservation</a>
       <a href="Menu.html">Menu</a>
+      <a href="${pageContext.request.contextPath}/Profilecontroller">Profile</a>
     </nav>
     
   </header>
