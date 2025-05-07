@@ -16,11 +16,9 @@ public class LoginService {
 	 * Constructor initializes the database connection.
 	 */
 	public LoginService() {
-		try {
-			this.dbConn = DBconfig.getDbConnection();
-		} catch (SQLException | ClassNotFoundException ex) {
-			System.err.println("Database connection error: " + ex.getMessage());
-			ex.printStackTrace();
+	    this.dbConn = DBconfig.getDbConnection();
+	    if (this.dbConn == null) {
+	        System.out.println("Database connection failed.");
 		}
 	}
 	
